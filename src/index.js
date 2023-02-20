@@ -16,6 +16,7 @@ function inputCountryName(event) {
   refCountryList.innerHTML = '';
   refCountryList.classList.remove('country-name-one');
   let inputValue = refInput.value.trim();
+  if (inputValue.length === 0) return;
   fetchCountries(inputValue)
     .then(countries => {
       let markUpCountriesList = createMarkupCountryList(countries);
