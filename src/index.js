@@ -12,11 +12,12 @@ const refCountryInfo = document.querySelector('.country-info');
 refInput.addEventListener('input', debounce(inputCountryName, DEBOUNCE_DELAY));
 
 function inputCountryName(event) {
+  let inputValue = refInput.value.trim();
+  if (inputValue.length === 0) return;
   refCountryInfo.innerHTML = '';
   refCountryList.innerHTML = '';
   refCountryList.classList.remove('country-name-one');
-  let inputValue = refInput.value.trim();
-  if (inputValue.length === 0) return;
+
   fetchCountries(inputValue)
     .then(countries => {
       let markUpCountriesList = createMarkupCountryList(countries);
